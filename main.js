@@ -1,45 +1,51 @@
-// @see https://en.wikipedia.org/wiki/Magic_8-Ball
+var appname = "jbm8b";
+require("Storage").write("+"+appname,{
+  "name":"Magic 8 Ball",
+  "description":"A simple fortune telling app",
+  "src":"-"+appname,
+  //"icon":"*"+appname,
+  "version":"0.0.1",
+  "type":"",
+  "tags":"game",
+});
+require("Storage").write("-"+appname,`
 const affirmative = [
-  'It is certain.',
+  'It is\ncertain.',
   'It is\ndicededly\nso.',
-  'Without a doubt.',
-  'Yes definitely.',
-  'You may rely\non it.',
-  'As I see,\nit yes',
-  'Most likely.',
-  'Outlook good.',
+  'Without\na doubt.',
+  'Yes\ndefinitely.',
+  'You may\nrely\non it.',
+  'As I see,\nit yes.',
+  'Most\nlikely.',
+  'Outlook\ngood.',
   'Yes.',
   'Signs point\nto yes.'
 ];
 const nonCommittal = [
   'Reply hazy,\ntry again.',
   'Ask again\nlater.',
-  'Better not\ntell you now.',
-  'Cannot\npredict now.',
-  'Concentrate\nand ask again.'
+  'Better not\ntell you\nnow.',
+  'Cannot\npredict\nnow.',
+  'Concentrate\nand\nask again.'
 ];
 const negative = [
   'Don\'t\ncount on it.',
-  'My reply is no.',
+  'My reply\nis no.',
   'My sources\nsay no.',
-  'Outlook is\nnot so good.',
-  'Very doubtful'
+  'Outlook\nis not\nso\ngood.',
+  'Very\ndoubtful.'
 ];
 
 const answers = [affirmative, nonCommittal, negative];
 
-/**
- * Returns a random number between min (inclusive) and max (exclusive)
- */
 function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
+  return Math.random() * (max - min) + min;
 }
 
 function predict(button) {
   const a = Math.floor(getRandomArbitrary(0, 3));
   const b = (a === 0) ? Math.floor(getRandomArbitrary(0, 10)) : Math.floor(getRandomArbitrary(0, 5));
   const response = answers[a][b];
-  console.log('Response:', response, button);
   return response;
 }
 
@@ -53,9 +59,10 @@ function reply(button) {
 }
 
 function ask() {
-  console.log('Ask me a Yes or No question...');
   draw('Ask me a\nYes or No\nquestion\nand\ntouch the\nscreen');
 }
+
+ask();
 
 Bangle.on('touch', (button) => reply(button));
 
@@ -63,3 +70,4 @@ setWatch(ask, BTN1, {repeat:true, edge:"falling"});
 
 // Back to launcher
 setWatch(Bangle.showLauncher, BTN2, {repeat:false, edge:"falling"});
+`);
