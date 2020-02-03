@@ -62,6 +62,11 @@ function ask() {
   draw('Ask me a\nYes or No\nquestion\nand\ntouch the\nscreen');
 }
 
+g.clear();
+
+Bangle.loadWidgets();
+Bangle.drawWidgets();
+
 ask();
 
 Bangle.on('touch', (button) => reply(button));
