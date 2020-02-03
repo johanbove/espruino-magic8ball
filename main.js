@@ -19,7 +19,7 @@ const nonCommittal = [
   'Concentrate\nand ask again.'
 ];
 const negative = [
-  'Don\'t count on it.',
+  'Don\'t\ncount on it.',
   'My reply is no.',
   'My sources\nsay no.',
   'Outlook is\nnot so good.',
@@ -48,10 +48,18 @@ function draw(msg) {
   E.showMessage(msg, 'Magic 8 Ball');
 }
 
-Bangle.on('touch', (button) => draw(predict(button)));
+function reply(button) {
+  draw(predict(button));
+}
 
-console.log('Ask me a Yes or No question...');
-draw('Ask me a\nYes or No\nquestion\nand\ntouch the\nscreen', 'Magic 8 Ball');
+function ask() {
+  console.log('Ask me a Yes or No question...');
+  draw('Ask me a\nYes or No\nquestion\nand\ntouch the\nscreen');
+}
+
+Bangle.on('touch', (button) => reply(button));
+
+setWatch(ask, BTN1, {repeat:true, edge:"falling"});
 
 // Back to launcher
 setWatch(Bangle.showLauncher, BTN2, {repeat:false, edge:"falling"});
