@@ -1,0 +1,3 @@
+# espruino-magic8ball
+
+Playing around...
