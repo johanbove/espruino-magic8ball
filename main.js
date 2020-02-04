@@ -1,14 +1,14 @@
-var appname = "jbm8b";
-require("Storage").write("+"+appname,{
-  "name":"Magic 8 Ball",
-  "description":"A simple fortune telling app",
-  "src":"-"+appname,
+const appname = "jbm8b";
+require("Storage").write("+" + appname, {
+  "name": "Magic 8 Ball",
+  "description": "A simple fortune telling app",
+  "src": "-" + appname,
   //"icon":"*"+appname,
-  "version":"1.1.0",
-  "type":"",
-  "tags":"game",
+  "version": "1.1.0",
+  "type": "",
+  "tags": "game",
 });
-require("Storage").write("-"+appname,`
+require("Storage").write("-" + appname, `
 const affirmative = [
   'It is\\ncertain.',
   'It is\\ndicededly\\nso.',
@@ -36,6 +36,8 @@ const negative = [
   'Very\\ndoubtful.'
 ];
 
+const title = 'Magic 8 Ball';
+
 const answers = [affirmative, nonCommittal, negative];
 
 function getRandomArbitrary(min, max) {
@@ -44,25 +46,26 @@ function getRandomArbitrary(min, max) {
 
 function predict() {
   // affirmative, negative or non-committal
-  let max = answers.length; 
+  let max = answers.length;
   const a = Math.floor(getRandomArbitrary(0, max));
   // sets max compared to answer category
   max = answers[a].length;
   const b = Math.floor(getRandomArbitrary(0, max));
-  // get the answer 
+  // get the answer
   const response = answers[a][b];
   return response;
 }
 
 function draw(msg) {
-  console.log(msg);
+  // console.log(msg);
   g.clear();
-  E.showMessage(msg, 'Magic 8 Ball');
+  E.showMessage(msg, title);
 }
 
 function reply(button) {
-  const theButton = (typeof button === 'undefined' || isNaN(button)) ? 1 : button; 
+  const theButton = (typeof button === 'undefined' || isNaN(button)) ? 1 : button;
   const timer = Math.floor(getRandomArbitrary(0, theButton) * 1000);
+  // Thinking...
   draw('...');
   setTimeout('draw(predict());', timer);
 }
@@ -76,13 +79,15 @@ g.clear();
 Bangle.loadWidgets();
 Bangle.drawWidgets();
 
+// Start
 ask();
+
+// Event Handlers
 
 Bangle.on('touch', (button) => reply(button));
 
 setWatch(ask, BTN1, {repeat:true, edge:"falling"});
 setWatch(reply, BTN3, {repeat:true, edge:"falling"});
-
 
 // Back to launcher
 setWatch(Bangle.showLauncher, BTN2, {repeat:false, edge:"falling"});
