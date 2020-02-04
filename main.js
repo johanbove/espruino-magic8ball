@@ -43,8 +43,13 @@ function getRandomArbitrary(min, max) {
 }
 
 function predict(button) {
-  const a = Math.floor(getRandomArbitrary(0, 3));
-  const b = (a === 0) ? Math.floor(getRandomArbitrary(0, 10)) : Math.floor(getRandomArbitrary(0, 5));
+  // affirmative, negative or non-committal
+  let max = 3; 
+  const a = Math.floor(getRandomArbitrary(0, max));
+  // sets max compared to answer category
+  max = (a === 0) ? 10 : 5;
+  const b = Math.floor(getRandomArbitrary(0, max));
+  // get the answer 
   const response = answers[a][b];
   return response;
 }
