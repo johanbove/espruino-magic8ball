@@ -42,12 +42,13 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
+// Not using param button yet
 function predict(button) {
   // affirmative, negative or non-committal
-  let max = 3; 
+  let max = answers.length; 
   const a = Math.floor(getRandomArbitrary(0, max));
   // sets max compared to answer category
-  max = (a === 0) ? 10 : 5;
+  max = a.length;
   const b = Math.floor(getRandomArbitrary(0, max));
   // get the answer 
   const response = answers[a][b];
