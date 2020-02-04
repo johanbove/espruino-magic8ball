@@ -4,7 +4,7 @@ require("Storage").write("+"+appname,{
   "description":"A simple fortune telling app",
   "src":"-"+appname,
   //"icon":"*"+appname,
-  "version":"1.0.0",
+  "version":"1.1.0",
   "type":"",
   "tags":"game",
 });
@@ -42,8 +42,7 @@ function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-// Not using param button yet
-function predict(button) {
+function predict() {
   // affirmative, negative or non-committal
   let max = answers.length; 
   const a = Math.floor(getRandomArbitrary(0, max));
@@ -62,7 +61,10 @@ function draw(msg) {
 }
 
 function reply(button) {
-  draw(predict(button));
+  const theButton = (typeof button === 'undefined' || isNaN(button)) ? 1 : button; 
+  const timer = Math.floor(getRandomArbitrary(0, theButton) * 1000);
+  draw('...');
+  setTimeout('draw(predict());', timer);
 }
 
 function ask() {
