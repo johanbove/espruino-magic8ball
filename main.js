@@ -4,7 +4,7 @@ require("Storage").write("+"+appname,{
   "description":"A simple fortune telling app",
   "src":"-"+appname,
   //"icon":"*"+appname,
-  "version":"0.0.1",
+  "version":"1.0.0",
   "type":"",
   "tags":"game",
 });
@@ -48,7 +48,7 @@ function predict(button) {
   let max = answers.length; 
   const a = Math.floor(getRandomArbitrary(0, max));
   // sets max compared to answer category
-  max = a.length;
+  max = answers[a].length;
   const b = Math.floor(getRandomArbitrary(0, max));
   // get the answer 
   const response = answers[a][b];
@@ -56,6 +56,7 @@ function predict(button) {
 }
 
 function draw(msg) {
+  console.log(msg);
   g.clear();
   E.showMessage(msg, 'Magic 8 Ball');
 }
@@ -78,6 +79,8 @@ ask();
 Bangle.on('touch', (button) => reply(button));
 
 setWatch(ask, BTN1, {repeat:true, edge:"falling"});
+setWatch(reply, BTN3, {repeat:true, edge:"falling"});
+
 
 // Back to launcher
 setWatch(Bangle.showLauncher, BTN2, {repeat:false, edge:"falling"});
