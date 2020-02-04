@@ -10,30 +10,30 @@ require("Storage").write("+"+appname,{
 });
 require("Storage").write("-"+appname,`
 const affirmative = [
-  'It is\ncertain.',
-  'It is\ndicededly\nso.',
-  'Without\na doubt.',
-  'Yes\ndefinitely.',
-  'You may\nrely\non it.',
-  'As I see,\nit yes.',
-  'Most\nlikely.',
-  'Outlook\ngood.',
+  'It is\\ncertain.',
+  'It is\\ndicededly\\nso.',
+  'Without\\na doubt.',
+  'Yes\\ndefinitely.',
+  'You may\\nrely\\non it.',
+  'As I see,\\nit yes.',
+  'Most\\nlikely.',
+  'Outlook\\ngood.',
   'Yes.',
-  'Signs point\nto yes.'
+  'Signs point\\nto yes.'
 ];
 const nonCommittal = [
-  'Reply hazy,\ntry again.',
-  'Ask again\nlater.',
-  'Better not\ntell you\nnow.',
-  'Cannot\npredict\nnow.',
-  'Concentrate\nand\nask again.'
+  'Reply hazy,\\ntry again.',
+  'Ask again\\nlater.',
+  'Better not\\ntell you\\nnow.',
+  'Cannot\\npredict\\nnow.',
+  'Concentrate\\nand\\nask again.'
 ];
 const negative = [
-  'Don\'t\ncount on it.',
-  'My reply\nis no.',
-  'My sources\nsay no.',
-  'Outlook\nis not\nso\ngood.',
-  'Very\ndoubtful.'
+  'Don\'t\\ncount on it.',
+  'My reply\\nis no.',
+  'My sources\\nsay no.',
+  'Outlook\nis not\\nso\\ngood.',
+  'Very\\ndoubtful.'
 ];
 
 const answers = [affirmative, nonCommittal, negative];
