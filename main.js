@@ -29,10 +29,10 @@ const nonCommittal = [
   'Concentrate\\nand\\nask again.'
 ];
 const negative = [
-  'Don\'t\\ncount on it.',
+  'Don\\'t\\ncount on it.',
   'My reply\\nis no.',
   'My sources\\nsay no.',
-  'Outlook\nis not\\nso\\ngood.',
+  'Outlook\\nis not\\nso\\ngood.',
   'Very\\ndoubtful.'
 ];
 
@@ -65,7 +65,7 @@ function reply(button) {
 }
 
 function ask() {
-  draw('Ask me a\nYes or No\nquestion\nand\ntouch the\nscreen');
+  draw('Ask me a\\nYes or No\\nquestion\\nand\\ntouch the\\nscreen');
 }
 
 g.clear();
